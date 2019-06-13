@@ -1,0 +1,5 @@
+1-locate yolov.weights file in this forlder (project folde)
+2-run Weights_Reading.py file
+3-run Run.py file , it should show the output of test image with bounding boxes
+4-saved model folder will contain the model files(checkpoints,metadata)
+5- if you want to export the model as .pb file (protobuffer) for serving , run Mode_export.py file , and the exported model will be in the model_exported folder
