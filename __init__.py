@@ -131,7 +131,7 @@ def process_frame(frame):
 
 
 app = Flask(__name__)
-@app.route("/process_frame")
+@app.route("/process_frame", methods=['GET', 'POST'])
 def process():
     frame = request.files['frame']
     filename = str(random.randint(1,99999)) + frame.filename
