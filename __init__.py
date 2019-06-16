@@ -3,7 +3,7 @@ import cv2
 import argparse
 import numpy as np
 import os
-from flask import Flask, request, url_for
+from flask import Flask, request, url_for, jsonify
 from werkzeug.utils import secure_filename
 import random
 
