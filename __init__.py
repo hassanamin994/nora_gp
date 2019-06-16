@@ -8,14 +8,15 @@ from werkzeug.utils import secure_filename
 import random
 import datetime
 
+server_base = os.path.dirname(os.path.realpath(__file__))
 # handle command line arguments
 ap = argparse.ArgumentParser()
 
-ap.add_argument('--config', default='/var/www/FlaskApp/FlaskApp/yolov3.cfg',
+ap.add_argument('--config', default= os.path.join(server_base, 'yolov3.cfg'),
                 help='path to yolo config file')
-ap.add_argument('--weights', default='/var/www/FlaskApp/FlaskApp/yolov3.weights',
+ap.add_argument('--weights', default= os.path.join(server_base, 'yolov3.weights'),
                 help='path to yolo pre-trained weights')
-ap.add_argument('--classes', default='/var/www/FlaskApp/FlaskApp/yolov3.txt',
+ap.add_argument('--classes', default= os.path.join(server_base, 'yolov3.txt'),
                 help='path to text file containing class names')
 args = ap.parse_args()
 
@@ -137,7 +138,7 @@ app = Flask(__name__)
 def process():
     frame = request.files['frame']
     filename = str(random.randint(1,99999)) + frame.filename
-    filePath = os.path.join("/var/www/FlaskApp/FlaskApp", filename)
+    filePath = os.path.join(server_base, filename)
     print('start', filePath, datetime.datetime.now())
     frame.save(filePath)
     boxes = process_frame(filePath)
