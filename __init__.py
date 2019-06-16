@@ -138,6 +138,8 @@ def process():
     filePath = os.path.join("/var/www/FlaskApp/FlaskApp", filename)
     frame.save(filePath)
     boxes = process_frame(filePath)
+    print('boxes are', boxes);
+    print(boxes)
     return jsonify(boxes=boxes)
 
 if __name__ == "__main__":
