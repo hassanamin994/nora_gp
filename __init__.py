@@ -6,6 +6,7 @@ import os
 from flask import Flask, request, url_for, jsonify
 from werkzeug.utils import secure_filename
 import random
+import datetime
 
 # handle command line arguments
 ap = argparse.ArgumentParser()
@@ -137,10 +138,10 @@ def process():
     frame = request.files['frame']
     filename = str(random.randint(1,99999)) + frame.filename
     filePath = os.path.join("/var/www/FlaskApp/FlaskApp", filename)
+    print('start', filePath, datetime.datetime.now())
     frame.save(filePath)
     boxes = process_frame(filePath)
-    print('boxes are', boxes);
-    print(boxes)
+    print('end', filePath, datetime.datetime.now())
     return jsonify(boxes=boxes)
 
 if __name__ == "__main__":
