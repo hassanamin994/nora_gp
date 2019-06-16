@@ -76,6 +76,7 @@ def split_classes(class_ids, boxes, confidences):
 
 
 def process_frame(frame):
+    Bounding_Boxes = []
     image = cv2.imread(frame)
     # print(image[0][0])
     Width = image.shape[1]
